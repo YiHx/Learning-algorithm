@@ -6,3 +6,4 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(CountConsistentKeys CountConsistentKeys.cpp)
 add_executable(String_Matching String_Matching.cpp)
+add_executable(RepeatMinimumLength RepeatMinimumLength.cpp)
