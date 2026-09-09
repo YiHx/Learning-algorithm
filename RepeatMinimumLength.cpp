@@ -1,17 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> nextArray(const string &s, const int last) {
-
-    vector<int> next (last+1,0);
-    if (last==1) {
+vector<int> nextArray(const string &s) {
+    int m =s.size();
+    vector<int> next (m+1,0);
+    if (m==1) {
         next[0]=-1;
         return next;
     }
     next[0]=-1;
     next[1]=0;
     int i =2,ct=0;
-    while (i<last) {
+    while (i<=m) {
         if (s[i-1]==s[ct]) {
             next[i++]=++ct;
         }else if (ct>0) {
@@ -27,30 +27,26 @@ void solve() {
     int l;
     string s;
     cin>>l>>s;
-    int last=0;
-    char lastNumber = s[s.length()-1];
-    for (int i=0;i<s.length();i++) {
-        if (s[i]==lastNumber) {
-            last =i;
-            break;
-        }
-    }
-    vector<int> next =nextArray(s,((int)s.length())-last);
+    // int last=0;
+    // char lastNumber = s[s.length()-1];
+    // for (int i=0;i<s.length();i++) {
+    //     if (s[i]==lastNumber) {
+    //         last =i;
+    //         break;
+    //     }
+    // }
+    vector<int> next =nextArray(s);
     int maxx = INT_MIN;
     if (s.size()==1) {
         cout<<"1"<<endl;
         return ;
     }
-   for (int i=1;i<(int)s.length()-last;i++) {
-
-           maxx = max(maxx,next[i]);
-
+   for (int i=1;i<=s.length();i++) {
+       maxx = max(maxx,next[i]);
    }
-    if (maxx==0||maxx ==INT_MIN) {
-        cout<<(int)s.length()-last-1<<endl;
-    }else {
-        cout<<maxx<<endl;
-    }
+
+        cout<<s.length()-maxx<<endl;
+
 
 }
 int main () {
