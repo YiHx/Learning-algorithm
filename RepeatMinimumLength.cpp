@@ -41,11 +41,11 @@ void solve() {
         cout<<"1"<<endl;
         return ;
     }
-   for (int i=1;i<=s.length();i++) {
-       maxx = max(maxx,next[i]);
-   }
+   // for (int i=1;i<=s.length();i++) {
+   //     maxx = max(maxx,next[i]);
+   // }
 
-        cout<<s.length()-maxx<<endl;
+        cout<<s.length()-next[s.length()]<<endl;
 
 
 }
