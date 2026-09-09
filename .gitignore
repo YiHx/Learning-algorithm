@@ -1,3 +1,17 @@
 ﻿*.exe
 cmake-build-*/
 .idea/
+
+
+*
+!*/
+
+
+!*.c
+!*.cpp
+!*.h
+!*.hpp
+!CMakeLists.txt
+!*.cmake
+!.gitignore
+!*.md
