@@ -2,6 +2,7 @@
 using namespace std;
 vector<vector<int>> b;
 vector<vector<int>> a;
+
 void solve () {
     int n,m;
     cin>>m>>n;
@@ -9,7 +10,7 @@ void solve () {
         int curr;
         cin>>curr;
         for (int j=0;j<curr;j++) {
-            
+
         }
     }
 }
