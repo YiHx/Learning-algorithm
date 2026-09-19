@@ -4,7 +4,9 @@ project(Learning_algorithm)
 set(CMAKE_CXX_STANDARD 20)
 
 
-add_executable(CountConsistentKeys CountConsistentKeys.cpp)
+add_executable(CountConsistentKeys CountConsistentKeys.cpp
+        thisa.cpp)
 add_executable(String_Matching String_Matching.cpp)
 add_executable(RepeatMinimumLength RepeatMinimumLength.cpp)
 add_executable(DeleteAgainAndAgain DeleteAgainAndAgain.cpp)
+add_executable(thisa thisa.cpp)
