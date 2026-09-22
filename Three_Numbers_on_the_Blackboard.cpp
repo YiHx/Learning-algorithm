@@ -3,17 +3,13 @@ using namespace std;
 #define endl '\n'
 
 void solve() {
-    int a,b,c;
-    cin>>a>>b>>c;
-    int minn =min({a,b,c});
-    int maxx =max({a,b,c});
-    int minn1 = maxx - minn;
-    cout << min({
-    minn1,
-    max({b+c, b, c}) - min({b+c, b, c}),
-    max({a, a+c, c}) - min({a, a+c, c}),
-    max({a, b, a+b}) - min({a, b, a+b})
-}) << endl;
+    vector<int> a(3);
+    for (int i=0;i<3;i++) {
+        cin>>a[i];
+    }
+    ranges::sort(a);
+    cout<<min(a[2]-a[0],a[1])<<endl;
+
 }
 int main () {
     ios::sync_with_stdio(0);
