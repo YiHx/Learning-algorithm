@@ -5,29 +5,28 @@ using namespace std;
 void solve(){
     int n;
     cin>>n;
-    if (n ==2) {
+    if (n ==2 ) {
         cout<<"Bob"<<endl;
         return;
     }
-    int need = n - 3;
     map<int,int> mp;
-    for (int i=0;i<n-1;i++) {
+    for (int i =0;i<n -1 ;i++) {
         int first,second;
         cin>>first>>second;
         mp[first]++;
         mp[second]++;
     }
-    int cnt = 0;
-    for (auto it : mp) {
-        if (it.second>2) {
-            cnt = cnt + (it.second - 2);
+    int leaf = 0;
+    for (auto & [v,time]: mp) {
+        if (time ==1) {
+            leaf++;
         }
     }
-    int needd = need - cnt;
-    if (needd == 1) {
-        cout<<"Alice"<<endl;
+    int next = n -1 - leaf;
+    if (next&1) {
+        cout<<"Alice";
     }else {
-        cout<<"Bob"<<endl;
+        cout<<"Bob";
     }
 }
 int main () {
