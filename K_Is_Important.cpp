@@ -5,26 +5,18 @@ using namespace std;
 void solve(){
     int n,k;
     cin>>n>>k;
-    vector<int> a(n+1);
-    long long sum = 0;
-    for(int i=1;i<=n;i++){
+    vector<long long> a(n+1,0);
+    for (int i=1;i<=n;i++) {
         cin>>a[i];
-        sum+=a[i];
     }
-    vector<long long > first(k , 0);
-    vector<long long> endd(k,0);
-    for(int i=1;i<k;i++){
-        first[i] =first[i -1] +a[i];
+    long long ans = 0;
+        for (int i= k ;i<=n-k+1;i++) {
+            ans+=a[i];
+        }
+    for (int i= 1;i<=min(k-1,n - k +1);i++) {
+        ans+=max(a[i],a[n-i +1]);
     }
-     for(int i = 1; i < k; i++) {
-        endd[i] = endd[i-1] + a[n - i + 1];
-    }
-    long long minn = LLONG_MAX;
-    for(int i=0;i<k;i++){
-        long long now = first[i] + endd[k -1 -i];
-        minn =min(minn,now);
-    }
-    cout<<sum - minn<<endl;
+    cout<<ans<<endl;
 }
 int main () {
     ios::sync_with_stdio(0);
