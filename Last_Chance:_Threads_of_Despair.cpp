@@ -10,14 +10,13 @@ void solve(){
     for (int i =0;i<n;i++) {
         long long curr =0;
         cin>>curr;
-        curr = min(n+m+2,curr);
+        // curr = min(n+m+2,curr);
         h[i] = curr;
     }
 
     for (int i =0;i<m;i++) {
         long long curr =0 ;
         cin>>curr;
-        // curr = min(n+m+2,curr);
         hp[i] = curr;
     }
     sort(h.begin(),h.end(),greater<long long>());
@@ -27,8 +26,8 @@ void solve(){
     long long boom = 0;
     long long dead = 0;
 
-    vector<long long>  health(n+m+3,0);
-    // map<long long ,long long>health;
+    // vector<long long>  health(n+m+3,0);
+    unordered_map<long long ,long long>health;
     for (int i= 0;i<n;i++) {
         health[h[i]]++;
     }
