@@ -40,7 +40,6 @@ bool check(int n, int m, vector<vector<int>> a, int target) {
                 last_x = nx;
                 last_y = ny;
             }
-            nowString.append(m - last_y,'R');
             nowString.append(n - last_x,'D');
             for (int now = last_y + 1; now <= m; now++) {
                 a[last_x][now]^=1;
