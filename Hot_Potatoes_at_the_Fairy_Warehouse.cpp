@@ -11,7 +11,12 @@ void solve(){
     cin>>a;
     a = " "+a;
     for (int i = 1;i<=a.size();i++) {
-        int next = (i+1)%a.size();
+        int next;
+        if (i+1 == 2*n) {
+            next = 2*n;
+        }else {
+            next = (i+1)%(2*n);
+        }
        if (a[i] - '0' == 1) {
            if (a[next] - '0' == 0) {
                if (i&1) {
