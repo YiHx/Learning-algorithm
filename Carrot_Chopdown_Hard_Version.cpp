@@ -30,15 +30,15 @@ void solve(){
         if (k>=30 || (1LL<<k)>=m) {
             ans = sum;
         }else {
-            for (ll x =1;x<= m / (1 << k);x++) {
+            for (ll x =1;x<= m / (1 << k)+1;x++) {
                 ll now = 0;
                 for (ll j =1 ;j<(1<< k)&&x*j<=m;j++) {
                     now+=sf[x*j];
                 }
                 if (x * (1<<k) <= m) {
-                    now+=sf[x*(1<<k)] - sf[x * (1<< k )+1];
+                    now += sf[x * (1 << k)] - sf[x * (1 << k) + 1];
                 }
-                ans = max(ans,sum);
+                ans = max(ans,now);
             }
         }
         cout<<ans<<" ";
