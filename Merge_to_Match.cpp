@@ -14,34 +14,22 @@ void solve(){
         cin>>b[i];
     }
 
-    if (n < m) {
-        cout<<"No"<<endl;
+    if (n < 2 * m) {
+        cout << "No" << endl;
         return;
     }
     sort(a.begin(),a.end());
     sort(b.begin(),b.end());
-    if (b[0]<a[0] || b[b.size()-1] > a[a.size()-1]) {
-        cout<<"No"<<endl;
-        return;
-    }
-    vector<bool> ok(n,false);
     bool check = true;
-    for (int i =0;i<b.size();i++) {
-        auto before = upper_bound(a.begin(),a.end(),b[i]);
-        auto next = lower_bound(a.begin(),a.end(),b[i]);
-        if  ( before == a.end() && next == a.end()) {
+
+    for (int i = 0; i < m; i++) {
+        if (a[i] > b[i] || a[n - m + i] < b[i]) {
             check = false;
             break;
         }
-        before--;
-        if (ok[before - a.begin() ]==true || ok[next - a.begin()] == true) {
-            check = false;
-            break;
-        }
-        ok[before - a.begin()] = true;
-        ok[next - a.begin()] = true;
     }
-    cout<< (check?"Yes":"No")<<endl;
+
+    cout << (check ? "Yes" : "No") << endl;
 }
 int main () {
     ios::sync_with_stdio(0);
