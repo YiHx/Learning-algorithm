@@ -1,18 +1,25 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
+#define int long long
 
 void solve(){
     int n;
     cin>>n;
+    int sum = n * (n + 1) / 2;
+    if (sum % 2) {
+        cout<<"NO"<<endl;
+        return;
+    }
+
     if (n ==1 || n ==2) {
         cout<<"NO"<<endl;
         return;
     }
 
     bool ok =false;
-    if ((n & (n -1)) == 0) {
-        ok  = true;
+    if (n % 4 == 0) {
+        ok = true;
     }
     int cnt = n/4;
 
@@ -39,7 +46,7 @@ void solve(){
     }
     bool check = false;
     int other = last -1;
-    if (last ==0 || (((last & other) == 0))) {
+    if (last % 4 ==0) {
         check =true;
     }
     int cntt = last/4;
@@ -63,7 +70,7 @@ void solve(){
     }
     cout<<"NO"<<endl;
 }
-int main () {
+signed main () {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int T =1;
