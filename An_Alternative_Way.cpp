@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
+#define int long long
 
 void solve(){
     int n;
@@ -32,7 +33,7 @@ void solve(){
     }
     cout<< (ok?"YES":"NO")<<endl;
 }
-int main () {
+signed main () {
     ios::sync_with_stdio(0);
     cin.tie(0);
     int T =1;
