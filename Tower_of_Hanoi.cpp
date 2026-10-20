@@ -1,27 +1,27 @@
 #include <bits/stdc++.h>
 using namespace std;
 #define endl '\n'
-stack <int> a,b,c;
 
-int dfs(int n) {
-    for (int i  =0;i<n;i++)
+void dfs(int n,int from,int to,int aux) {
+    if ( n ==0)return;
+
+    dfs(n-1,from, aux,to);
+    cout<<from<<" "<<to<<endl;
+
+    dfs(n -1,aux,to,from);
+
 }
 
 void solve(){
     int n;
     cin>>n;
-    for (int i =n;i>=1;i--){
-        a.push(i);
-    }
-
-    int ans = dfs(0);
-    cout<<ans<<endl;
-
+    cout<< (1<<n) -1<<endl;
+    dfs(n,1,3,2);
 }
 int main () {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int T =1;
+     int T =1;
     // cin>>T;
     while(T--){
         solve();
