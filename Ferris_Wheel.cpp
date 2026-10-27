@@ -12,15 +12,17 @@ void solve(){
     }
     int ans =0;
     sort(a.begin(),a.end());
-    for (int i=0;i<n/2;i++) {
-        if (a[i]+ a[n -i -1]<=x) {
+    int i = 0;
+    int j = n -1;
+    while (i<=j) {
+        if (a[i]+a[j]<=x) {
             ans++;
+            i++;
+            j--;
         }else {
-            ans+=2;
+            ans++;
+            j--;
         }
-    }
-    if (n%2!=0) {
-        ans++;
     }
     cout<<ans<<endl;
 }
