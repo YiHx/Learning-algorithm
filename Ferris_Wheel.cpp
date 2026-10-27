@@ -12,14 +12,15 @@ void solve(){
     }
     int ans =0;
     sort(a.begin(),a.end());
-    for (int i=0;i<n;) {
-        if (i+1 < n && a[i]+a[i+1]<=x) {
+    for (int i=0;i<n/2;i++) {
+        if (a[i]+ a[n -i -1]<=x) {
             ans++;
-            i+=2;
         }else {
-            ans++;
-            i++;
+            ans+=2;
         }
+    }
+    if (n%2!=0) {
+        ans++;
     }
     cout<<ans<<endl;
 }
