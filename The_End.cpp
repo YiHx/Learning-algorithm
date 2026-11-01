@@ -18,6 +18,7 @@ void calc() {
 
         double prob = 1;
         int bit = 0;
+        bool ok = true;
 
         while (v.size() > 1) {
             vector<int> t;
@@ -29,17 +30,24 @@ void calc() {
                 if (mask & (1 << bit)) {
                     prob *= q;
                     t.push_back(x);
+                    if (y == 1) ok = false;
                 } else {
                     prob *= (1 - q);
                     t.push_back(y);
+                    if (x == 1) ok = false;
                 }
+
                 bit++;
+
+                if (!ok) break;
             }
+
+            if (!ok) break;
 
             v = t;
         }
 
-        if (v[0] == 1) {
+        if (ok) {
             sum += prob;
         }
     }
