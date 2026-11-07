@@ -1,23 +1,45 @@
 #include <bits/stdc++.h>
-using namespace std;
 #define endl '\n'
 #define int long long
+using namespace std;
+const int N = 200005;
+bool st[N];
+vector<int> primes;
 
-void solve(){
-    int n;
-    cin>>n;
-    vector<int> a(n);
-    for(int i =0;i<n;i++){
-        cin>>a[i];
+void init() {
+    for (int i = 2; i<N; i++) {
+        if (st[i]) continue;
+        primes.push_back(i);
+        if (i * i < N) {
+            for (int j = i * i; j <N; j += i) {
+                st[j] = true;
+            }
+        }
     }
-    
 }
-signed main () {
+
+void solve() {
+    int n;
+    cin >> n;
+
+    for (int i = 1; i <= n; i++) {
+        int x;
+        cin >> x;
+
+        auto it = lower_bound(primes.begin(), primes.end(), x);
+        cout << *it <<" ";
+    }
+    cout<<endl;
+}
+
+signed main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
-    int T =1;
-    cin>>T;
-    while(T--){
+
+    init();
+    int T;
+    cin >> T;
+    while (T--) {
         solve();
     }
     return 0;
