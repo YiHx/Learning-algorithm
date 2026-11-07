@@ -6,23 +6,24 @@ using namespace std;
 void solve(){
     int n;
     cin>>n;
-    vector<pair<int,int>> a(n);
-    for (int i = 0;i<n;i++) {
-        cin>>a[i].first;
+    vector<int> a(n);
+    for (int i  =0;i<n;i++) {
+        cin>>a[i];
     }
-    for (int i = 0;i<n;i++) {
-        cin>>a[i].second;
+    vector<int> b(n);
+    for (int i  =0;i<n;i++) {
+        cin>>b[i];
     }
-    vector<pair<int,int>> b(n);
-    b = a;
-    sort(a.begin(),a.end(),[&](pair<int,int> x,pair<int,int> y) {
-        return x.first > y.first;
-    });
-    sort(b.begin(),b.end(),[&](pair<int,int> x,pair<int,int> y) {
-        return x.second < y.second;
-    });
+    sort(a.rbegin(),a.rend());
+    sort(b.begin(),b.end());
+
     int q;
     cin>>q;
+    while (q--) {
+        int curr;
+        cin>>curr;
+
+    }
 
 
 
