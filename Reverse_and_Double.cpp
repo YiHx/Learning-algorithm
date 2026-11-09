@@ -47,54 +47,62 @@ void solve(){
         cout<<min(maxx_value, curr)<<endl;
         return;
     }else {
-        int p = idx[0];
+         int p = idx[0];
+    int ans = maxx_value;
 
-    vector<int> pre(n+1,0),suf(n+1,0);
+    vector<int> b(n);
+    for(int i=0;i<n;i++){
+        b[i]=2*a[i];
+    }
 
-    for(int i=0;i<n-1;i++){
-        pre[i+1]=max(pre[i],abs(a[i]-a[i+1]));
+   
+    vector<int> pre(n,0),suf(n,0);
+    for(int i=1;i<n;i++){
+        pre[i]=max(pre[i-1],abs(a[i]-a[i-1]));
     }
     for(int i=n-2;i>=0;i--){
         suf[i]=max(suf[i+1],abs(a[i]-a[i+1]));
     }
 
-    int ans=maxx_value;
+  
     int l=p;
-    int inside=0;
+    int mx=0;
 
     for(int r=l;r<n;r++){
         if(r>l){
-            inside=max(inside,2*abs(a[r-1]-a[r]));
+            mx=max(mx,abs(b[r]-b[r-1]));
         }
 
-        int curr=max({pre[l-1],suf[r+1],inside});
-        curr=max(curr,abs(a[l-1]-2*a[r]));
+        int curr=mx;
+
+        curr=max(curr,pre[l-1]);
+        curr=max(curr,abs(a[l-1]-b[r]));
 
         if(r+1<n){
-            curr=max(curr,abs(2*a[l]-a[r+1]));
+            curr=max(curr,abs(b[l]-a[r+1]));
+            curr=max(curr,suf[r+1]);
         }
 
         ans=min(ans,curr);
     }
 
+    
     int r=p-1;
-    inside=0;
+    mx=0;
 
     for(int l=r;l>=0;l--){
         if(l<r){
-            inside=max(inside,2*abs(a[l]-a[l+1]));
+            mx=max(mx,abs(b[l]-b[l+1]));
         }
 
-        int curr=max({
-            l>0?pre[l-1]:0,
-            suf[r+1],
-            inside
-        });
+        int curr=mx;
 
-        curr=max(curr,abs(2*a[l]-a[r+1]));
+        curr=max(curr,suf[r+1]);
+        curr=max(curr,abs(b[l]-a[r+1]));
 
         if(l>0){
-            curr=max(curr,abs(a[l-1]-2*a[r]));
+            curr=max(curr,abs(a[l-1]-b[r]));
+            curr=max(curr,pre[l-1]);
         }
 
         ans=min(ans,curr);
