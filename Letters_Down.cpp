@@ -14,6 +14,8 @@ void solve() {
 
     for (int i = 0; i < n / 2; i++) {
         int l = min(s[i], s[n - i - 1]) - 'a';
+
+        
         int r = max(s[i], s[n - i - 1]) - 'a';
 
         for (int j = l + 1;j <= r; j++) {
@@ -31,7 +33,7 @@ void solve() {
 
 signed main() {
     ios::sync_with_stdio(0);
-    cin.tie(0);
+    cin.tie(0); 
 
     int T;
     cin >> T;
