@@ -4,34 +4,26 @@ using namespace std;
 #define int long long
 
 void solve(){
-    vector<int> a;
-    int curr;
-    while (cin>>curr) {
-        a.push_back(curr);
-    }
-    vector<int> dp1(a.size(),1);
-    vector<int> dp2(a.size(),1);
+    vector<int> f,g;
+    int x;
+    while (cin>>x) {
+        auto it1 = upper_bound(f.begin(),f.end(),x,greater<int>());
+        if (it1 == f.end()) {
+            f.push_back(x);
+        }else {
+            *it1 = x;
+        }
 
-    for (int i =0;i<dp1.size();i++) {
-        for (int j =0;j<i;j++) {
-            if (a[j]>=a[i]) {
-                dp1[i] = max(dp1[i],dp1[j]+1);
-            }
-            if (a[j] < a[i]) {
-                dp2[i] = max(dp2[i],dp2[j]+1);
-            }
+        auto it2 = lower_bound(g.begin(),g.end(),x);
+
+        if (it2 == g.end()) {
+            g.push_back(x);
+        }else {
+            *it2 = x;
         }
     }
-    int ans = -1;
-    for (int i =0;i<dp1.size();i++) {
-        ans = max(ans,dp1[i]);
-    }
-    cout<<ans<<endl;
-    ans = -1;
-    for (int i =0;i<dp2.size();i++) {
-        ans = max(ans,dp2[i]);
-    }
-    cout<<ans<<endl;
+    cout<< f.size() <<endl;
+    cout<<g.size() <<endl;
 }
 signed main () {
     ios::sync_with_stdio(0);
