@@ -5,27 +5,31 @@ using namespace std;
 void solve() {
     int n,m;
     double q;
-    cin>> n >> m >> q;
-    vector<pair<double,int>> a(n);
-    for (int i  =0;i<n;i++) {
-        cin>>a[i].second;
-    }
+    cin>>n>>m>>q;
+    int Q = round(q*1000);
+
+    vector<int> a(n);
     for (int i =0;i<n;i++) {
-        cin>>a[i].first;
+        cin>>a[i];
     }
-    sort(a.begin(),a.end());
-    double chaa = 0;
-    int ans = 0;
+    vector<int> w(n);
     for (int i =0;i<n;i++) {
-        chaa += (pow(a[i].first,2));
-        if ((double)m / (sqrt(chaa))< q) {
-            break;
-        }else {
-            ans+=a[i].second;
+        double curr;
+        cin>>curr;
+        int x = round(curr*10);
+        w[i] = x*x;
+    }
+    int C = 100000000LL*m*m/(Q*Q);
+
+    vector<int> dp(C+1,0);
+
+    for (int i =0;i<n;i++) {
+        for (int j =C;j>=w[i];j--) {
+            dp[j] = max(dp[j],dp[j-w[i]]+a[i]);
         }
     }
-    cout<<ans<<endl;
 
+    cout<<dp[C]<<endl;
 }
 
 signed main() {
