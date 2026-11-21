@@ -24,9 +24,9 @@ void solve(){
         }
     }
     
-    while(left<right){
+    while(left < right){
         if(check(mid)){
-            
+
         }
     }
 
