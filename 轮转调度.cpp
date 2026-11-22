@@ -10,7 +10,7 @@ void solve() {
         cin>>a[i];
     }
 
-    vector<int> s[n];
+    vector<int> s[n+1];
 
     vector<int> cnt(n+1);
     for (int i =1;i<=n;i++) {
@@ -31,7 +31,7 @@ void solve() {
     if (t == 1000000000) {
         vector<queue<pair<int,int>>> cpu(m+1);
         for (int i =1;i<=n;i++) {
-            int noww  = (i-1)% (m+1);
+            int noww  = (i-1)% m+1;
             cpu[noww].push({cnt[i],i});
         }
 
