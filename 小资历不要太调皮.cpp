@@ -9,7 +9,20 @@ void solve() {
     string s,t;
     cin>> s>> t;
 
-    
+    string a = "WASD";
+    sort(a.begin(),a.end());
+    do {
+        string curr = "";
+        curr.reserve(4*n);
+        for (int i =0 ;i<n;i++)curr+=a;
+        if (curr.find(t) == string::npos && curr.find(s) == string::npos) {
+            cout << curr <<endl;
+            return;
+        }
+
+    }while (next_permutation(a.begin(),a.end()));
+    cout <<-1<<endl;
+
 }
 
 signed main(){

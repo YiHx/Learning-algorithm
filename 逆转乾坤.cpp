@@ -27,7 +27,7 @@ void solve() {
         for (int j = 0; j<=29;j++) {
             int curr = 1LL << j;
             int now = curr ^ a[i];
-            ans = max(ans , gcd(gcd(pre[i],now),last[i]));
+            ans = max(ans,gcd(gcd(pre[i],now),last[i]));
         }
     }
     cout << ans <<endl;
