@@ -9,19 +9,17 @@ void solve() {
         cin>>a[i];
     }
 
-    vector<int> dp(n+1,1);
-    for (int i = 1;i<=n;i++) {
-        for (int j = 1;j<i;j++) {
-            if (a[i]> a[j]) {
-                dp[i] = max(dp[i],dp[j]+1);
-            }
+    vector<int> cnt;
+
+    for (int i =1;i<=n;i++) {
+        auto it = lower_bound(cnt.begin(),cnt.end(),a[i]);
+        if (it == cnt.end()) {
+            cnt.push_back(a[i]);
+        }else {
+            cnt[it - cnt.begin()] = a[i];
         }
     }
-    int ans = -1;
-    for (int i =1;i<=n;i++) {
-        ans = max(ans,dp[i]);
-    }
-    cout <<ans <<endl;
+    cout <<cnt.size() <<endl;
 }
 
 signed main(){
