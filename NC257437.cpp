@@ -2,11 +2,6 @@
 using namespace std;
 #define int long long
 void solve() {
-    string s;
-    cin >> s;
-    s = " " + s;
-
-    vector<array<int,2>> dp(n+1,)
 
 
 
