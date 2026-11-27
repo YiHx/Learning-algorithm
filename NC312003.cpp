@@ -14,13 +14,26 @@ void solve() {
         cin >> b[i];
     }
 
-    vector<array<int,2>> dp(n+1,{0,0});
+    vector<bool> dp(2048, false);
+    dp[0] = true;
 
-    for (int i =1;i<=n;i++) {
-        dp[i][0] = max(max(0LL,dp[i-1][0] - a[i]),max(0LL,dp[i-1][1] - a[i]));
-        dp[i][1] = max(dp[i-1][1]^b[i],dp[i-1][0]^b[i]);
+    for (int i = 1; i <= n; i++) {
+        vector<bool> nxt(2048, false);
+        for (int v = 0; v < 2048; v++) {
+            if (dp[v]) {
+                nxt[max(0LL, v - a[i])] = true;
+                nxt[v ^ b[i]] = true;
+            }
+        }
+        dp = nxt;
     }
-    cout << max(dp[n][0],dp[n][1]) << endl;
+
+    for (int v = 2047; v >= 0; v--) {
+        if (dp[v]) {
+            cout << v << endl;
+            return;
+        }
+    }
 }
 
 signed main(){
