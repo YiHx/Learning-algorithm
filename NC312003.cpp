@@ -14,13 +14,13 @@ void solve() {
         cin >> b[i];
     }
 
-    vector<int> dp(n+1,0);
+    vector<array<int,2>> dp(n+1,{0,0});
 
     for (int i =1;i<=n;i++) {
-        dp[i] = max(max(0LL,dp[i-1] - a[i]),dp[i-1]^b[i]);
+        dp[i][0] = max(max(0LL,dp[i-1][0] - a[i]),max(0LL,dp[i-1][1] - a[i]));
+        dp[i][1] = max(dp[i-1][1]^b[i],dp[i-1][0]^b[i]);
     }
-
-    cout << dp[n] <<endl;
+    cout << max(dp[n][0],dp[n][1]) << endl;
 }
 
 signed main(){
